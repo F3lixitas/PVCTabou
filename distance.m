@@ -1,4 +1,6 @@
 function [dist]=distance(ordre, villes)
+% ordre : ordre des villes
+% villes : coord x,y des villes
     if size(villes, 2) ~= 2
         error("Erreur dans la fonction distance : Les villes doivent avoir des positions en 2 dimensions");
     end
