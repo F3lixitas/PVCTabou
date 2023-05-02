@@ -12,7 +12,3 @@ function [dist]=distance(ordre, villes)
     end
     dist = dist + eucDist(villes(ordre(s), 1), villes(ordre(s), 2));
 end
-
-function [res]=eucDist(a,b)
-    res = sqrt(a^2+b^2);
-end
