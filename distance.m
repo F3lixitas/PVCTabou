@@ -1,4 +1,6 @@
 function [dist]=distance(ordre, villes)
+% ordre : ordre des villes
+% villes : coord x,y des villes
     if size(villes, 2) ~= 2
         error("Erreur dans la fonction distance : Les villes doivent avoir des positions en 2 dimensions");
     end
@@ -9,8 +11,4 @@ function [dist]=distance(ordre, villes)
         dist = dist + eucDist(villes(ordre(k), 1), villes(ordre(k), 2));
     end
     dist = dist + eucDist(villes(ordre(s), 1), villes(ordre(s), 2));
-end
-
-function [res]=eucDist(a,b)
-    res = sqrt(a^2+b^2);
 end
