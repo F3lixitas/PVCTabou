@@ -5,10 +5,11 @@ function [dist]=distance(ordre, villes)
         error("Erreur dans la fonction distance : Les villes doivent avoir des positions en 2 dimensions");
     end
     s = size(villes,2);
-    dist = eucDist(villes(1, ordre(1)), villes(2, ordre(1)));
-
+    temp = zeros(2,s+1);
+    temp(:,2:s+1)=villes;
+    dist = norm(temp(:, ordre(1)+1) - temp(:,1));
     for k=2:s
-        dist = dist + eucDist(villes(1, ordre(k)), villes(2, ordre(k)));
+        dist = dist + norm(temp(:, ordre(k)+1) - temp(:, ordre(k-1)+1));
     end
-    dist = dist + eucDist(villes(1, ordre(s)), villes(2, ordre(s)));
+    dist = dist + norm(temp(:, ordre(s)+1));
 end

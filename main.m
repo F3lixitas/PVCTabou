@@ -1,8 +1,8 @@
 rand('state', sum(100*clock));
 % Entrée de test
 
-villes = [ 1, 2, 1;
-           1, 1, 2];
+villes = [ 1, 2, 1, 6, 7, 2, 4, 9, 3;
+           1, 1, 2, 0, 4, 5, 3, 2, 7];
 
 %find(villes(1,:) == 2)
 
