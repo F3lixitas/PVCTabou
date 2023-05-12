@@ -1,6 +1,11 @@
 function [deltaP]=calculDeltaP(ordre, D)
-    s=size(ordre,2);
+% fonction qui calcule la différence de distance induite par une
+% permutation sur toutes les permutations possibles. La valeur à une case
+% i,j donne la différence si on permute la ville i et la ville j
+    s=size(ordre,2); % nombre de villes
     deltaP = zeros(s);
+
+    % exception : permutation entre la première et dernière ville
     deltaP(ordre(1),ordre(s)) =  D(ordre(s)+1, ordre(2)+1) ...
                             - D(ordre(1)+1, ordre(2)+1) ...
                             + D(ordre(s-1)+1, ordre(1)+1) ...

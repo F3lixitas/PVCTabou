@@ -8,17 +8,15 @@ function [Tup,Pup]=select(deltaP,T,it,P,it_rand)
 % Tup : T updated
 % Pup : P updated
 
-rand('state',sum(100*clock));
-
 temp = T < ones(size(T))*it; % 1 si inversion possible 0 si tabou
-
+compt=0;
 min_possible=0;
 
 while compt<(size(deltaP,1)^2)&&(min_possible==0)
     
-    [xmin,pos_ymin]=min(deltaP,[],1)
-    [~,pos_ymin2]=min(xmin,[],2)
-    pos_min=[pos_ymin2,pos_ymin(pos_ymin2)] % villes au min de delta
+    [xmin,pos_ymin]=min(deltaP,[],1);
+    [~,pos_ymin2]=min(xmin,[],2);
+    pos_min=[pos_ymin2,pos_ymin(pos_ymin2)]; % villes au min de delta
     
     i=pos_min(1); % ville
     j=pos_min(2); % ville
@@ -35,7 +33,7 @@ while compt<(size(deltaP,1)^2)&&(min_possible==0)
         min_possible=1;
     end
 
-
+compt=compt+1;
 end
 
 Tup=T;

@@ -1,9 +1,21 @@
 rand('state', sum(100*clock));
 % Entrée de test
 
-villes = [ 5, 9, 3, 4, 6, 7, 2, 5, 1, 6, 8, 7;
-           2, 1, 3, 7 ,4, 6, 2, 8, 4, 2, 8, 3];
+villes = [ 1, 2, 1;
+           1, 1, 2];
 
-D=matrice_distance(villes)
-ordre = [5, 2, 4, 9, 3, 8, 1, 10, 6, 11, 7, 12];
-deltaP=calculDeltaP(ordre, D)
+%find(villes(1,:) == 2)
+
+ordre=PVCTabou(villes, 1000)
+villes_ordonnees = zeros(size(villes,1), size(villes, 2)+2);
+for k=1:size(ordre,2)
+    villes_ordonnees(:,k+1) = villes(:, ordre(k));
+end
+
+distance(ordre, villes)
+
+figure;
+plot(villes(1,:), villes(2,:), '+');
+hold on
+plot(villes_ordonnees(1, :), villes_ordonnees(2, :));
+hold off
