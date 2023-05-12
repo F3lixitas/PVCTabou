@@ -1,5 +1,5 @@
 function [deltaP]=calculDeltaP(ordre, D)
-    s=size(ordre);
+    s=size(ordre,2);
     deltaP = zeros(s);
     deltaP(ordre(1),ordre(s)) =  D(ordre(s)+1, ordre(2)+1) ...
                             - D(ordre(1)+1, ordre(2)+1) ...
