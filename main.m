@@ -1,19 +1,16 @@
-rand('state', sum(100*clock));
-% Entrée de test
+rand('state', 1975);
+% Ce fichier sert à tester notre algorithme
 
-villes = [ 1, 2, 1, 6, 7, 2, 4, 9, 3, 8, 1, 4,6 , 3, 7, 4, -1, 3, 7, -6, 5, -5, 1, 2, 9, 6, -4, -2, 4, 7;
-           1, 1, 2, 0, 4, 5, 3, 2, 7, 7, 5, 1, 9, 4, 3, 5, 7, -2, 8, 3, -7, -3, -1, 4, 8, 1, 3, -8, 6, 1];
-
-%find(villes(1,:) == 2)
-
-%villes = rand(2, 30).*10;
+villes = round(rand(2, 5)*20-10);
 
 dist = [];
 t = [];
-it = 1000000;
+it = 100000;
 
 opti = [];
 distOpti = -1;
+
+rand('state', sum(100*clock));
 
 for n = 1:100
     tic
@@ -28,21 +25,10 @@ for n = 1:100
         distOpti = distance(ordre, villes);
         opti = ordre;
     end
-
-    
 end
 
+distOpti
 opti
-
-mean_d=mean(dist)
-std_d=std(dist)
-min_d=min(dist)
-max_d=max(dist)
-
-mean_t=mean(t*1000)
-std_t=std(t*1000)
-min_t=min(t*1000)
-max_t=max(t*1000)
 
 villes_ordonnees = zeros(size(villes,1), size(villes, 2)+2);
 for k=1:size(opti,2)
